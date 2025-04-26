@@ -1,0 +1,24 @@
+{
+  "name": "wfuzz-lab",
+  "build": { "dockerfile": "Dockerfile", "context": "." },
+
+  // Make VS Code itself run as the normal user,
+  // and keep UID/GID in sync with your host unless you say otherwise.
+  "remoteUser": "vscode",
+  "updateRemoteUserUID": true,          // Docs: code.visualstudio.com/remote/… 2
+
+  // Optional – VS Code extensions you always want
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+
+  // Expose a dummy port if you want to tunnel to a target service later.
+  "portsAttributes": {
+    "9200": { "label": "Target web service" }
+  }
+}
